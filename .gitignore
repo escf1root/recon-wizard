@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+.venv/
+.venv-tools/
+.venv-proyekbaru/
+
+# Tools lokal
+tools/
+
+# Output scan
+results/
+hasil_scan/
+cek/
+d2/
+/32
+/32d
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
