@@ -1,5 +1,8 @@
 <!-- updated -->
 <p align="center">
+  <img src="images/imagewr.png" alt="ReconWizard Logo" width="500"/>
+</p>
+<p align="center">
   <a href="./LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
   </a>
@@ -18,10 +21,6 @@
   <a href="https://github.com/escf1root/recon-wizard">
     <img src="https://img.shields.io/github/languages/top/escf1root/recon-wizard" alt="Top Language" />
   </a>
-</p>
-
-<p align="center">
-  <img src="images/imagewr.png" alt="ReconWizard Logo" width="500"/>
 </p>
 
 ---
