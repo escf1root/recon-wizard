@@ -22,16 +22,16 @@ import argparse
 import logging
 from colorama import init, Fore, Style
 
-# Inisialisasi colorama
+
 init(autoreset=True)
 
-# Konfigurasi logging untuk pencatatan error dan informasi
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        # logging.FileHandler('recon.log'), # Opsional: simpan log ke file
-        logging.StreamHandler(sys.stdout)  # Cetak log ke terminal
+        
+        logging.StreamHandler(sys.stdout)  
     ]
 )
 
@@ -56,12 +56,12 @@ def print_colored_help():
     print(Fore.CYAN + "  python3 main.py -t example.com -o ./results -nt /path/to/templates\n")
 
 def main():
-    # Deteksi jika argumen --help atau -h digunakan
+    
     if "-h" in sys.argv or "--help" in sys.argv:
         print_colored_help()
         sys.exit(0)
 
-    parser = argparse.ArgumentParser(add_help=False)  # Nonaktifkan bantuan bawaan
+    parser = argparse.ArgumentParser(add_help=False)  
     parser.add_argument('-t', '--target', required=True, help=argparse.SUPPRESS)
     parser.add_argument('-o', '--output-dir', default='./results', help=argparse.SUPPRESS)
     parser.add_argument('-sf', '--secretfinder-path', default='./SecretFinder.py', help=argparse.SUPPRESS)
@@ -69,7 +69,7 @@ def main():
 
     args = parser.parse_args()
 
-    # Validasi target
+    
     if not is_valid_domain(args.target):
         error_msg = f"❌ Invalid domain format: {args.target}"
         print(Fore.RED + error_msg)
@@ -84,12 +84,12 @@ def main():
     print()
 
     try:
-        # 1. Cek tools wajib
+        
         logging.info("Checking required tools...")
         check_required_tools()
         logging.info("All required tools are available.")
 
-        # 2. Validasi dan siapkan direktori output
+        
         output_dir = args.output_dir
         logging.info(f"Setting up output directory: {output_dir}")
 
@@ -112,21 +112,21 @@ def main():
             logging.info(f"Using existing output directory: {output_dir}")
             print(Fore.GREEN + f"✅ Using existing directory: {output_dir}")
 
-        # 3. Validasi dan temukan path SecretFinder
+        
         secretfinder_path_arg = args.secretfinder_path
         logging.info(f"Validating SecretFinder script path: {secretfinder_path_arg}")
 
-        # Cek apakah argumen adalah path ke file atau direktori
+        
         if os.path.isfile(secretfinder_path_arg):
-            # Jika argumen adalah file, validasi langsung
+            
             secretfinder_script = secretfinder_path_arg
             logging.info(f"SecretFinder script provided directly: {secretfinder_script}")
         elif os.path.isdir(secretfinder_path_arg):
-            # Jika argumen adalah direktori, cari SecretFinder.py di dalamnya
+            
             possible_script_paths = [
                 os.path.join(secretfinder_path_arg, 'SecretFinder.py'),
                 os.path.join(secretfinder_path_arg, 'secretfinder.py'),
-                os.path.join(secretfinder_path_arg, 'SecretFinder', 'SecretFinder.py'), # Jika ada subfolder
+                os.path.join(secretfinder_path_arg, 'SecretFinder', 'SecretFinder.py'), 
                 os.path.join(secretfinder_path_arg, 'secretfinder', 'secretfinder.py'),
             ]
             found_script = False
@@ -151,7 +151,7 @@ def main():
         logging.info(f"SecretFinder script validated: {secretfinder_script}")
         print(Fore.GREEN + f"✅ SecretFinder script: {secretfinder_script}")
 
-        # 4. Validasi path Nuclei Templates (jika disediakan)
+        
         nuclei_templates = args.nuclei_templates
         if nuclei_templates:
             logging.info(f"Validating Nuclei templates path: {nuclei_templates}")
@@ -174,7 +174,7 @@ def main():
         print(Fore.GREEN + f"✅ Target set: {args.target}")
         print("\n")
 
-        # 5. Jalankan proses reconnaissance
+        
         logging.info("Starting reconnaissance process...")
         run_recon(args.target, output_dir, secretfinder_script, nuclei_templates)
         logging.info("Reconnaissance process completed.")
@@ -186,7 +186,7 @@ def main():
     except Exception as e:
         error_msg = f"\n{Fore.RED}❌ Unexpected error occurred: {e}"
         print(error_msg)
-        logging.critical(f"Unexpected error: {e}", exc_info=True) # exc_info=True mencetak traceback lengkap
+        logging.critical(f"Unexpected error: {e}", exc_info=True) 
         sys.exit(1)
 
 if __name__ == "__main__":
