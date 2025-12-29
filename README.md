@@ -82,7 +82,7 @@ This script is **designed and tested to work with specific versions** of Go-base
 | `uro`          | URL deduplication          | `go install github.com/lc/uro@latest`                                      |
 | `nuclei`       | Vulnerability scanner      | `go install github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest`       |
 | `katana`       | Web crawler (v1.1.0)       | `go install github.com/projectdiscovery/katana/cmd/katana@v1.1.0`          |
-| `SecretFinder` | JavaScript secrets scanner | [GitHub Repository](https://github.com/m4ll0k/SecretFinder)                |
+| `SecretFinder` | JavaScript secrets scanner | `git clone https://github.com/m4ll0k/SecretFinder`                         |
 
 ### Python Dependencies
 
