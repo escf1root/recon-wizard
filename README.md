@@ -142,3 +142,68 @@ Options:
 Example:
   python3 main.py -t example.com -o ./domain -sf /home/kali/secretfinder/ -nt /home/kali/nuclei-templates
 ```
+
+## Termux users
+Enter these commands 1 by 1 according to the reading
+```
+pkg update && pkg upgrade -y
+
+pkg install python-pip
+
+pkg install -y \
+git \
+python \
+pip \
+clang \
+make \
+libxml2 \
+libxslt \
+wget \
+tar
+
+nano ~/.bashrc
+copy this all
+
+export CFLAGS="-I$PREFIX/include"
+export LDFLAGS="-L$PREFIX/lib"
+export XML2_CONFIG=$PREFIX/bin/xml2-config
+export XSLT_CONFIG=$PREFIX/bin/xslt-config
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export CC=/data/data/com.termux/files/usr/bin/clang
+export CXX=/data/data/com.termux/files/usr/bin/clang++
+
+
+source ~/.bashrc
+
+pkg install golang 
+
+git clone https://github.com/m4ll0k/SecretFinder.git secretfinder
+cd secretfinder
+
+python -m pip install -r requirements.txt
+
+pwd     ## see in which directory you saved secretfinder
+
+cd
+
+pip install uro 
+go install github.com/projectdiscovery/katana/cmd/katana@v1.1.0
+go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+go install github.com/projectdiscovery/httpx/cmd/httpx@latest
+go install github.com/tomnomnom/waybackurls@latest
+go install github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+
+git clone https://github.com/projectdiscovery/nuclei-templates.git ~/nuclei-templates
+
+nuclei  ## test
+
+git clone https://github.com/escf1root/recon-wizard.git
+cd recon-wizard
+
+Usage:
+python3 main.py -t example.com -o ./domain -sf /data/data/com.termux/files/home/secretfinder/ 
+```
+
+
+
