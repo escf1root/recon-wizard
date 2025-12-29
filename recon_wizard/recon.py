@@ -70,23 +70,23 @@ def run_command(command, step_name, output_file=None, check_output=False, allow_
                 process.kill()
             
             if allow_skip:
-                print(Fore.YELLOW + "⏭️  Skipping this step and continuing to next...")
+                print(Fore.YELLOW + "  Skipping this step and continuing to next...")
             else:
-                print(Fore.RED + "⏭️  Critical step interrupted. Attempting to continue to next steps...")
+                print(Fore.RED + "  Critical step interrupted. Attempting to continue to next steps...")
             return True
         
         process.wait()
         
         if check_output and output_file:
             if not os.path.exists(output_file):
-                print(Fore.RED + f"❌ FAILED: Output file not created - {os.path.basename(output_file)}")
-                print(Fore.RED + "⏭️  Critical step failed. Attempting to continue to next steps...")
+                print(Fore.RED + f" FAILED: Output file not created - {os.path.basename(output_file)}")
+                print(Fore.RED + "  Critical step failed. Attempting to continue to next steps...")
                 return True
             
             file_size = os.path.getsize(output_file)
             if file_size == 0:
                 print(Fore.YELLOW + f"⚠️  WARNING: Output file is empty - {os.path.basename(output_file)}")
-                print(Fore.RED + "⏭️  Critical step produced empty output. Attempting to continue to next steps...")
+                print(Fore.RED + "  Critical step produced empty output. Attempting to continue to next steps...")
                 return True
             
             print(Fore.GREEN + f"✅ SUCCESS: {os.path.basename(output_file)} created ({file_size} bytes)")
@@ -96,22 +96,22 @@ def run_command(command, step_name, output_file=None, check_output=False, allow_
             if os.path.exists(output_file):
                 size = os.path.getsize(output_file)
                 if size > 0:
-                    print(Fore.GREEN + f"✅ Completed - Output: {os.path.basename(output_file)} ({size} bytes)")
+                    print(Fore.GREEN + f" Completed - Output: {os.path.basename(output_file)} ({size} bytes)")
                 else:
-                    print(Fore.YELLOW + f"⚠️  Completed - Output: {os.path.basename(output_file)} (0 bytes - no results found)")
+                    print(Fore.YELLOW + f"  Completed - Output: {os.path.basename(output_file)} (0 bytes - no results found)")
             else:
-                print(Fore.YELLOW + f"⚠️  Completed - No output file generated")
+                print(Fore.YELLOW + f"  Completed - No output file generated")
         
         return True
             
     except Exception as e:
         print(Fore.RED + f"❌ ERROR: {e}")
-        print(Fore.RED + "⏭️  An error occurred. Attempting to continue to next steps...")
+        print(Fore.RED + "  An error occurred. Attempting to continue to next steps...")
         return True
 
 def run_recon(target, output_dir, secretfinder_script, nuclei_templates):
     print("\n" + Fore.GREEN + Style.BRIGHT + "="*70)
-    print(Fore.GREEN + Style.BRIGHT + "   🚀 Step 5: Starting Automated Reconnaissance")
+    print(Fore.GREEN + Style.BRIGHT + "    Step 5: Starting Automated Reconnaissance")
     print(Fore.GREEN + Style.BRIGHT + "="*70)
     
     httpx_cmd = get_httpx_path()
