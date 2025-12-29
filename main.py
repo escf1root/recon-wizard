@@ -53,7 +53,7 @@ def print_colored_help():
     print(Fore.GREEN + "  -h, --help" + Fore.WHITE + "\t\t\tShow this help message and exit\n")
 
     print(Fore.MAGENTA + "Example:")
-    print(Fore.CYAN + "  python3 main.py -t example.com -o ./results -nt /path/to/templates\n")
+    print(Fore.CYAN + " python3 main.py -t example.com -o ./domain -sf /path/to/secretfinder/\n")
 
 def main():
     
