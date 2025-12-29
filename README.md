@@ -143,7 +143,7 @@ Example:
   python3 main.py -t example.com -o ./domain -sf /home/kali/secretfinder/ -nt /home/kali/nuclei-templates
 ```
 
-## Termux users
+## 📦 Termux users
 Enter these commands 1 by 1 according to the reading
 ```
 pkg update && pkg upgrade -y
