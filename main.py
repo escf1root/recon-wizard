@@ -166,7 +166,7 @@ def main():
                 logging.critical(error_msg)
                 sys.exit(1)
             logging.info(f"Nuclei templates validated: {nuclei_templates}")
-            print(Fore.GREEN + f"✅ Nuclei templates: {nuclei_templates}")
+            print(Fore.GREEN + f" Nuclei templates: {nuclei_templates}")
         else:
             logging.info("No custom Nuclei templates specified. Using default templates.")
             print(Fore.YELLOW + "ℹ️  Using default Nuclei templates")
