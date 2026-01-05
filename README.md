@@ -69,7 +69,7 @@ This script is **designed and tested to work with specific versions** of Go-base
 ### System Requirements
 
 - Linux (tested on Kali Linux)
-- Python 3.7+
+- Python 3.7++
 - Go ( Version go1.24.4 linux/amd64 )
 
 ### Tool Dependencies
